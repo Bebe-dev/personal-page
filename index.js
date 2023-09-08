@@ -20,8 +20,6 @@ const getTime = () => {
     currentMinutes = `0${currentMinutes}`
   }
   time.innerHTML = `Time: ${currentHour}:${currentMinutes}`
-  
-  
 
 }
 getTime()
