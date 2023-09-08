@@ -1,16 +1,17 @@
 var day = document.getElementById('day');
 var time = document.getElementById('time');
 var utcTime = document.getElementById('utc')
-const currentDate = new Date();
+
 const getDay = () => {
   const week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
+  const currentDate = new Date();
   const dayNumber = currentDate.getDay()
   day.innerHTML = `Day: ${week[dayNumber]}`
 }
 getDay()
 
 const getTime = () => {
+  const currentDate = new Date();
   var currentHour = currentDate.getHours() - 1;
   if (currentHour<10){
     currentHour = `0${currentHour}`
@@ -19,7 +20,11 @@ const getTime = () => {
   if (currentMinutes<10){
     currentMinutes = `0${currentMinutes}`
   }
-  time.innerHTML = `Time: ${currentHour}:${currentMinutes}`
+  var currentSeconds = currentDate.getSeconds();
+  if (currentSeconds<10){
+    currentSeconds = `0${currentSeconds}`
+  }
+  time.innerHTML = `Time: ${currentHour}:${currentMinutes}:${currentSeconds}`
 
 }
-getTime()
+setInterval(getTime, 1000);
